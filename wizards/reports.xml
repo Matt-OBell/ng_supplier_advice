@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="payment_advice">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <div class="container row">
+                                <address>
+                                    <span t-raw="doc.company_id.name"/>.<br/>
+                                    <span t-raw="doc.company_id.street"/><br/>
+                                    <span t-raw="doc.company_id.city"/><br/>
+                                    <span t-raw="doc.company_id.state_id.name"/><br/>
+                                    <span t-raw="doc.company_id.zip"/><br/>
+                                    <table>
+                                        <tr><td>Phone: </td><td style="float:right"><span t-raw="doc.company_id.phone"/></td></tr>
+                                        <tr><td>Mail: </td><td style="float:right"><span t-raw="doc.company_id.email"/></td></tr>
+                                    </table>
+                                </address>
+
+                                <div class="row" style="font-size:1.8em">
+                                    <div class="col-md-3 col-md-offset-5">PAYMENT ADVICE</div>
+                                    <br/>
+                                </div>
+                                <!--  -->
+                                <div class="row" style="font-size:1.0em">
+                                    <div class="col-md-4">
+                                        <ul style="list-style-type:none;padding:0px">
+                                            <li style="margin: 0 10px 10px 0;"><b>Supplier:</b> <span t-field="doc.partner_id"/></li>
+                                            <li style="margin: 0 10px 10px 0;"><b>Number:</b> <span t-field="doc.number"/></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-2"></div>
+
+                                    <div class="col-md-4" style="float:right">
+                                        <ul style="list-style-type:none;padding:0px">
+                                            <li style="margin: 0 10px 10px 0;"><b>Date: </b><span t-field="doc.date"/></li>
+                                            <li style="margin: 0 10px 10px 0;"><b>Total Paid: </b><span t-field="doc.amount"/></li>
+                                            <li style="margin: 0 10px 10px 0;"><b>Cheque Number: </b></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding:15px">
+                                    <div class="col-md-3 col-md-offset-5">PAYMENT LINES</div>
+                                    <table class="table">
+                                        <thead>
+                                            <tr><td>Description</td><td>Amount</td></tr>
+                                        </thead>
+                                        <t t-foreach="doc.line_ids" t-as="line_id">
+                                            <tr>
+                                                <td><span t-field="line_id.product_id"/></td>
+                                                <td><span t-field="line_id.price_subtotal"/></td>
+                                            </tr>
+                                        </t>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                Net Total: &#160; &#160;<span t-field="doc.amount"/><br/>
+                                                Taxes: &#160; &#160; &#160; &#160;<span t-field="doc.tax_amount"/><br/>
+                                                Total: &#160; &#160; &#160; &#160; &#160;<span t-field="doc.amount"/><br/>
+                                            </td>
+                                        </tr>
+                                        <tr><td><b>Amount in words:</b></td><td><span t-raw="doc.amount_to_text(doc.amount)"/></td></tr>
+                                    </table>
+                                </div>
+
+
+                                <!-- signature -->
+                                <div class="row">
+                                    <div class="col-md-4" style="float:left;padding:15px">
+                                        <hr style="height: 1px;border-top:1px dotted;margin:0px"/>
+                                        <p><b>AUTHORISED SIGNATORY</b></p>
+                                        <ul style="list-style-type:none;padding:0px">
+                                            <li style="margin: 0 5px 5px 0;">PREPARED BY:</li>
+                                            <li style="margin: 0 5px 5px 0;">NAME:</li>
+                                            <li style="margin: 0 5px 5px 0;">SIGNATURE:</li>
+                                            <li style="margin: 0 5px 5px 0;">DATE:</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4" style="float:left;padding:50px">
+                                        <ul style="list-style-type:none;padding:0px">
+                                            <li style="margin: 0 5px 5px 0;">PASSED BY:</li>
+                                            <li style="margin: 0 5px 5px 0;">NAME:</li>
+                                            <li style="margin: 0 5px 5px 0;">SIGNATURE:</li>
+                                            <li style="margin: 0 5px 5px 0;">DATE:</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4" style="float:right;padding:0px">
+                                        <hr style="height: 1px;border-top:1px dotted;margin:0px"/>
+                                        <p><b>AUTHORISED SIGNATORY</b></p>
+                                        <ul style="list-style-type:none;padding:0px">
+                                            <li style="margin: 0 5px 5px 0;">APPROVED BY:</li>
+                                            <li style="margin: 0 5px 5px 0;">NAME:</li>
+                                            <li style="margin: 0 5px 5px 0;">SIGNATURE:</li>
+                                            <li style="margin: 0 5px 5px 0;">DATE:</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

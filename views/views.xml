@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="ng_supplier_advice.list">
+      <field name="name">ng_supplier_advice list</field>
+      <field name="model">ng_supplier_advice.ng_supplier_advice</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="ng_supplier_advice.action_window">
+      <field name="name">ng_supplier_advice window</field>
+      <field name="res_model">ng_supplier_advice.ng_supplier_advice</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="ng_supplier_advice.action_server">
+      <field name="name">ng_supplier_advice server</field>
+      <field name="model_id" ref="model_ng_supplier_advice_ng_supplier_advice"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="ng_supplier_advice" id="ng_supplier_advice.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="ng_supplier_advice.menu_1" parent="ng_supplier_advice.menu_root"/>
+    <menuitem name="Menu 2" id="ng_supplier_advice.menu_2" parent="ng_supplier_advice.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="ng_supplier_advice.menu_1_list" parent="ng_supplier_advice.menu_1"
+              action="ng_supplier_advice.action_window"/>
+    <menuitem name="Server to list" id="ng_supplier_advice" parent="ng_supplier_advice.menu_2"
+              action="ng_supplier_advice.action_server"/>
+    -->
+  </data>
+</odoo>
